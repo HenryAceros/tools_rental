@@ -66,6 +66,19 @@ function deleteExpert(uid, callback){
         callback(`Error to get users ${error}`);
     })
 }
+function searchExpert(location, callback) {
+    return db.collection('experts').where("location", "==", location).get()
+        .then((refDoc) => {
+            var arrayExperts = [];
+            refDoc.forEach(doc => {                
+                arrayExperts.push(doc.data());
+            })
+            callback(arrayExperts);
+        })
+        .catch((err) => {
+            callback("Error to search expert ", err)
+        })
+}
 
 module.exports = {
     getExperts,
@@ -73,9 +86,8 @@ module.exports = {
     addExpert,
     updateExpertPartially,
     updateExpertTotally,
-    deleteExpert
+    deleteExpert, searchExpert
 }
-
 
 // PARA PROBAR LOS METODOS
 // correr node crudExperts.js
