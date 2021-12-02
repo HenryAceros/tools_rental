@@ -5,7 +5,7 @@
 .idea
 **/node_modules/*
 **/.firebaserc
-toolsworkinc-01e90974beee.json
+#toolsworkinc-01e90974beee.json
 
 ### Firebase Patch ###
 .runtimeconfig.json
